@@ -1,0 +1,175 @@
+@startuml
+
+class Main {
+    +Main()
+    +main(args: String[]): void
+}
+
+class Intro_screen {
+    +Intro_screen()
+    +display_intro(): void
+}
+
+class Main_menu {
+    +Main_menu()
+    +display_MainMenu(): void
+}
+
+class Input_Scanner {
+    +Input_Scanner()
+    +Intro_scan(): void
+    +MM_scan(): void
+    +Journey_scan(): void
+}
+
+class Battle {
+    -playerTextemon: Textemon
+    -opponentTextemon: Textemon
+    -opponentHealth: double
+    -opponentstunned: boolean
+    -random: Random
+    -playerwins: boolean
+    +Battle(playerTextemon: Textemon, opponentTextemon: Textemon)
+    +startBattle(): boolean
+    -attack(attacker: Textemon, defender: Textemon): void
+    +resetBattle(): void
+}
+
+Main --> Intro_screen
+Main --> Main_menu
+Main --> Input_Scanner
+
+Input_Scanner --> Battle
+
+class Textemon {
+    - String name
+    - String type
+    - double health
+    - double damage
+    - int spec_attac_counter
+    - int spec_ability_counter
+    + Textemon(name: String, type: String, health: double, damage: double)
+    + getName(): String
+    + getType(): String
+    + getHealth(): double
+    + getDamage(): double
+    + setName(name: String): void
+    + setType(type: String): void
+    + setHealth(health: double): void
+    + setDamage(damage: double): void
+    + special_attack(opponentTextemon: Textemon): void
+    + special_ability(opponentTextemon: Textemon): void
+}
+
+class Grass_type {
+    - boolean found
+    + Grass_type(name: String, type: String, health: double, damage: double)
+    + isFound(): boolean
+    + setFound(found: boolean): void
+    + getDodgeChance(): double
+    + special_attack(opponentTextemon: Textemon): void
+    + special_ability(opponentTextemon: Textemon): void
+    + isSpecialAbilitySuccessful(): boolean
+    + isSpecialAttackSuccessful(): boolean
+    + display(): void
+}
+
+class Fire_type {
+    - boolean found
+    + Fire_type(name: String, type: String, health: double, damage: double)
+    + isFound(): boolean
+    + setFound(found: boolean): void
+    + getDodgeChance(): double
+    + special_attack(opponentTextemon: Textemon): void
+    + special_ability(opponentTextemon: Textemon): void
+    + isSpecialAbilitySuccessful(): boolean
+    + isSpecialAttackSuccessful(): boolean
+    + display(): void
+}
+
+class Electric_type {
+    - boolean found
+    + Electric_type(name: String, type: String, health: double, damage: double)
+    + isFound(): boolean
+    + setFound(found: boolean): void
+    + getDodgeChance(): double
+    + special_attack(opponentTextemon: Textemon): void
+    + special_ability(opponentTextemon: Textemon): void
+    + isSpecialAbilitySuccessful(): boolean
+    + isSpecialAttackSuccessful(): boolean
+    + display(): void
+}
+
+class Water_type {
+    - boolean found
+    + Water_type(name: String, type: String, health: double, damage: double)
+    + isFound(): boolean
+    + setFound(found: boolean): void
+    + getDodgeChance(): double
+    + special_attack(opponentTextemon: Textemon): void
+    + special_ability(opponentTextemon: Textemon): void
+    + isSpecialAbilitySuccessful(): boolean
+    + isSpecialAttackSuccessful(): boolean
+    + display(): void
+}
+
+class Journey_screen {
+    + Journey_screen()
+    + display_journey(): void
+}
+
+class JourneyStory {
+    + helpingHand(): void
+    + forestExploration(): void
+    + guardiansChallenge(): void
+    + elementalTrials(): void
+    + lostRelic(): void
+    + darkCitadel(): void
+    + guardiansLegacy(): void
+    + finalConfrontation(): void
+}
+
+class Input_Scanner {
+    + static Journey_scan(): void
+}
+
+class Partition {
+    + static display_partition(): void
+}
+
+class Textedox {
+    + chooseTextemon(): Textemon
+    + displayAllTextemons(stage: String): void
+}
+
+class Battle {
+    - Textemon playerTextemon
+    - Textemon opponentTextemon
+    + Battle(playerTextemon: Textemon, opponentTextemon: Textemon)
+    + startBattle(): boolean
+    + attack(attacker: Textemon, defender: Textemon, damage: double): void
+}
+
+Textemon --> Grass_type
+Textemon --> Fire_type
+Textemon --> Electric_type
+Textemon --> Water_type
+Textemon --> JourneyStory
+Textemon --> Textedox
+Textemon --> Battle
+
+Textemon_G --|> Grass_type
+Textemon_F --|> Fire_type
+Textemon_E --|> Electric_type
+Textemon_W --|> Water_type
+
+Journey_screen --> Input_Scanner
+JourneyStory --> Textedox
+JourneyStory --> Partition
+JourneyStory --> Battle
+Textedox --> Grass_type
+Textedox --> Fire_type
+Textedox --> Electric_type
+Textedox --> Water_type
+
+@enduml

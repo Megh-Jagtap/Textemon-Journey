@@ -1,0 +1,27 @@
+@startuml
+
+left to right direction
+
+actor Player as "Player"
+
+rectangle "Textemon Game" {
+    usecase "Choose Textemon" as ChooseTextemon
+    usecase "Start Journey" as StartJourney
+    usecase "Explore Forest" as ExploreForest
+    usecase "Conquer Trials" as ConquerTrials
+    usecase "Find Lost Relic" as FindLostRelic
+    usecase "Defeat Dark Citadel" as DefeatDarkCitadel
+    usecase "Discover Guardian's Legacy" as DiscoverGuardiansLegacy
+    usecase "Face Final Confrontation" as FaceFinalConfrontation
+}
+
+Player --> ChooseTextemon : (1) Select
+Player --> StartJourney : (2) Start
+Player --> ExploreForest : (3) Explore
+Player --> ConquerTrials : (4) Conquer
+Player --> FindLostRelic : (5) Find
+Player --> DefeatDarkCitadel : (6) Defeat
+Player --> DiscoverGuardiansLegacy : (7) Discover
+Player --> FaceFinalConfrontation : (8) Face
+
+@enduml
